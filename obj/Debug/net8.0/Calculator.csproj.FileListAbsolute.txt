@@ -1,0 +1,15 @@
+/home/robert/Dokumenty/PRG/Kalk/Calculator/obj/Debug/net8.0/Calculator.GeneratedMSBuildEditorConfig.editorconfig
+/home/robert/Dokumenty/PRG/Kalk/Calculator/obj/Debug/net8.0/Calculator.AssemblyInfoInputs.cache
+/home/robert/Dokumenty/PRG/Kalk/Calculator/obj/Debug/net8.0/Calculator.AssemblyInfo.cs
+/home/robert/Dokumenty/PRG/Kalk/Calculator/obj/Debug/net8.0/Calculator.csproj.CoreCompileInputs.cache
+/home/robert/Dokumenty/PRG/Kalk/Calculator/obj/Debug/net8.0/Calculator.sourcelink.json
+/home/robert/Dokumenty/PRG/Kalk/Calculator/bin/Debug/net8.0/Calculator
+/home/robert/Dokumenty/PRG/Kalk/Calculator/bin/Debug/net8.0/Calculator.deps.json
+/home/robert/Dokumenty/PRG/Kalk/Calculator/bin/Debug/net8.0/Calculator.runtimeconfig.json
+/home/robert/Dokumenty/PRG/Kalk/Calculator/bin/Debug/net8.0/Calculator.dll
+/home/robert/Dokumenty/PRG/Kalk/Calculator/bin/Debug/net8.0/Calculator.pdb
+/home/robert/Dokumenty/PRG/Kalk/Calculator/obj/Debug/net8.0/Calculator.dll
+/home/robert/Dokumenty/PRG/Kalk/Calculator/obj/Debug/net8.0/refint/Calculator.dll
+/home/robert/Dokumenty/PRG/Kalk/Calculator/obj/Debug/net8.0/Calculator.pdb
+/home/robert/Dokumenty/PRG/Kalk/Calculator/obj/Debug/net8.0/Calculator.genruntimeconfig.cache
+/home/robert/Dokumenty/PRG/Kalk/Calculator/obj/Debug/net8.0/ref/Calculator.dll

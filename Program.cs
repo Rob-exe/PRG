@@ -1,7 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 /*
@@ -13,11 +14,11 @@ namespace Calculator
 {
     internal class Program
     {
-		static string input;
-		static double[] number;
-		static char[] operators;
-		static char[] priority;
-		static float[] result;
+		static string input = "";
+		static double[] numbers = [];
+		static char[] operators = [];
+		static char[] priority = [];
+		static float[] result = [];
         static void Main(string[] args)
         {
             /*
@@ -45,23 +46,38 @@ namespace Calculator
 
 			do {
 				input = Console.ReadLine(); //Reads input from user and checks whether it is valid
-			} while(Valid(input))
-			
+			} while(Valid(input));
+			ParseCalculate(input);
 
             Console.ReadKey(); //Toto nech jako posledni radek, aby se program neukoncil ihned, ale cekal na stisk klavesy od uzivatele.
         }
 		static bool Valid(string input) {
-			for (int i = 0;i =< input.Length; i++) {
+			for (int i = 0;i <= input.Length; i++) {
 				if (Regex.IsMatch(input, @"^[a-zA-Z]+$")) //RegEx to see if anything is a letter, returns true (repeat) if it does, false if it does not
 				{
-					Console.WriteLine("Incorrect formula entered, only numbers.")
-					return true
-				} else {return false}
-
+					Console.WriteLine("Incorrect formula entered, only numbers.");
+					return true;
+					break;
+				} else {
+					return false;
+					break;
+				};
+				return false;
 			}
+			return false;
 		}
-		static float Parse(string input) {
-			
+		static bool ParseCalculate(string input) {
+			string number = "";
+			foreach (char c in input)
+            {
+				
+                if (c > 39 && c < 48)
+                {
+                    number += c;
+                }
+				Console.WriteLine(number);
+            }
+			return true;
 		}
     }
 }
