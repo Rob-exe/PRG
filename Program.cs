@@ -13,11 +13,11 @@ namespace Calculator
 {
     internal class Program
     {
-		global string input;
-		global double[] number;
-		global char[] operators;
-		global char[] priority;
-		global float[] result;
+		static string input;
+		static double[] number;
+		static char[] operators;
+		static char[] priority;
+		static float[] result;
         static void Main(string[] args)
         {
             /*
@@ -45,14 +45,13 @@ namespace Calculator
 
 			do {
 				input = Console.ReadLine(); //Reads input from user and checks whether it is valid
-
 			} while(Valid(input))
 			
 
             Console.ReadKey(); //Toto nech jako posledni radek, aby se program neukoncil ihned, ale cekal na stisk klavesy od uzivatele.
         }
-		static void Valid(string input) {
-			for (int i = 0;i < input.Length; i++) {
+		static bool Valid(string input) {
+			for (int i = 0;i =< input.Length; i++) {
 				if (Regex.IsMatch(input, @"^[a-zA-Z]+$")) //RegEx to see if anything is a letter, returns true (repeat) if it does, false if it does not
 				{
 					Console.WriteLine("Incorrect formula entered, only numbers.")
@@ -60,6 +59,9 @@ namespace Calculator
 				} else {return false}
 
 			}
+		}
+		static float Parse(string input) {
+			
 		}
     }
 }
