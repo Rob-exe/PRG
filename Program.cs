@@ -5,11 +5,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-string input;
-List<double> numbers;
-char[] operators;
-char[] priority;
-float[] result;
+float number1;
+char operator = "";
+float number2;
 /*
 * ZADANI
 * Vytvor program ktery bude fungovat jako kalkulacka. Kroky programu budou nasledujici:
@@ -31,55 +29,31 @@ float[] result;
 */
 
 Console.WriteLine("Hello, this is a calculator, enter the equation you want solved and I will solve it for you.");
-Console.WriteLine("Use only numbers and symbols for mathematical operations. Use a period (.) for a decimal number. Do not use spaces.");
-
-do
+Console.WriteLine("Use only numbers and symbols (+,-,/,*,%) for mathematical operations. Use a period (.) for a decimal number. Do not use spaces. Enter first number:");
+number1 = Convert.tofloat(Console.ReadLine());
+COnsole.WriteLine("Now enter the operator:");
+operator = Console.ReadLine();
+Console.WriteLine("Enter the second number:");
+number2 = Convert.ToFloat(Console.Readline());
+switch (c)
 {
-	input = Console.ReadLine(); //Reads input from user and checks whether it is valid
-} while (Valid(input));
-ParseCalculate(input);
+	case (37): //ASCII character for per cent sign
+	Console.WriteLine(number1 % number2);
+	break;
+	case (42):
+	Console.WriteLine(number1 * number2);
+	break;
+	case (43):
+	Console.WriteLine(number1 + number2);
+	break;
+	case (45):
+	Console.WriteLine(number1 - number2);
+	break;
+	case (47):
+	Console.WriteLine(number1 / number2);
+	break;
+	default:
+	Console.WriteLine("Error");
+}
 
 Console.ReadKey(); //Toto nech jako posledni radek, aby se program neukoncil ihned, ale cekal na stisk klavesy od uzivatele.
-bool Valid(string input)
-{
-	char c;
-	if (!string.IsNullOrEmpty(input)) //Check if null or no input
-		{
-			for(int i = 0; i < input.Length;)
-			{
-				c = input[i];
-				if (c >= 97 && c <= 122) 
-				{
-					return true;
-				}
-				else if (c <= 90 && c >= 65)
-				{
-					return true;
-				}
-				else {
-					return false;
-				}
-			}
-	} else 
-	{
-		Console.WriteLine("Empty formula entered, only numbers.");
-		return true;
-	}
-}
-bool ParseCalculate(string input)
-{
-	string number = "";
-	foreach (char c in input)
-	{
-
-		if (c => 48 && c =< 57)
-		{
-			number += c;
-		} else if (c == ) 
-		else if (c !> 47 && c !< 58){
-			numbers[] = Convert.ToDouble(number);
-		}
-		Console.WriteLine(number);
-	}
-	return true;
-}

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/robert/Dokumenty/PRG/Kalk/Calculator/Calculator.csproj": {}
+    "C:\\Users\\Robert\\PRG\\Calculator\\Calculator.csproj": {}
   },
   "projects": {
-    "/home/robert/Dokumenty/PRG/Kalk/Calculator/Calculator.csproj": {
+    "C:\\Users\\Robert\\PRG\\Calculator\\Calculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/robert/Dokumenty/PRG/Kalk/Calculator/Calculator.csproj",
+        "projectUniqueName": "C:\\Users\\Robert\\PRG\\Calculator\\Calculator.csproj",
         "projectName": "Calculator",
-        "projectPath": "/home/robert/Dokumenty/PRG/Kalk/Calculator/Calculator.csproj",
-        "packagesPath": "/home/robert/.nuget/packages/",
-        "outputPath": "/home/robert/Dokumenty/PRG/Kalk/Calculator/obj/",
+        "projectPath": "C:\\Users\\Robert\\PRG\\Calculator\\Calculator.csproj",
+        "packagesPath": "C:\\Users\\Robert\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Robert\\PRG\\Calculator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/robert/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Robert\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -58,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
