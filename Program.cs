@@ -55,9 +55,11 @@ if (operation == 114) { //Checks for square root, if valid, second input is not 
 } else if (operation == 115)
 {
 	Math.Sin(input1);
+	goto End;
 } else if (operation == 99)
 {
 	Math.Cos(input1);
+	goto End;
 } else if (EnteredSecondNumber) {
 	goto Calculate;
 }
