@@ -36,13 +36,14 @@ char endCase;
 Start:
 Console.WriteLine("Hello, this is a calculator, enter the equation you want solved and I will solve it for you.");
 Console.WriteLine("Use only numbers and symbols (+,-,/,*,%,^,r,l) for mathematical operations. Use a comma (,) for a decimal number. Do not use spaces. If you want to raise a number use only whole numbers. For roots (r) the syntax is second numbers root of the first number. For logarithms (l) the second number is the base of the logarithm. Enter first number:");
-input1: if (!double.TryParse(Console.ReadLine(), out input1)) //Reads first input and checks whether it is valid
+input1: 
+if (!double.TryParse(Console.ReadLine(), out input1)) //Reads first input and checks whether it is valid
 {
 	Console.WriteLine("Number entered incorrectly. Did you use a period instead of a comma?");
 	goto input1;
 } 
-Console.WriteLine("Now enter the operator:");
 inputOp: 
+Console.WriteLine("Now enter the operator:");
 if (!char.TryParse(Console.ReadLine(), out operation)) //Reads operand input and then converts to char
 {
 	Console.WriteLine("Operation entered incorrectly, please input only one character and make sure it is only one of the following: +, -, /, %, *, ^");
