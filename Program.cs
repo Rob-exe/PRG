@@ -75,8 +75,8 @@ switch ((int)operation) //Converts char of operation to ASCII position number an
 	Console.WriteLine("Error");
 	break;
 }
-Console.WriteLine("Do you want to continue? (y)es/(n)o"); //Asks whether or not usr wants to continue
-while (Console.ReadKey().Key != ConsoleKey.Y || Console.ReadKey().Key != ConsoleKey.N); //Checks whether user hits Y or N
+Console.WriteLine("Do you want to continue? (y)es/(N)o"); //Asks whether or not usr wants to continue
+while (Console.ReadKey().Key != ConsoleKey.Y || Console.ReadKey().Key != ConsoleKey.N || Console.ReadKey().Key != ConsoleKey.Enter); //Checks whether user hits Y or N or Enter
 if (Console.ReadKey().Key == ConsoleKey.Y) //Y is pressed
 	goto input1; //Goes to start, otherwise ends.
 
