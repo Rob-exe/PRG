@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
+string rawInput;
 double input1;
 char operation;
 double input2;
@@ -30,13 +32,25 @@ double result = 0;
 */
 
 Console.WriteLine("Hello, this is a calculator, enter the equation you want solved and I will solve it for you.");
-Console.WriteLine("Use only numbers and symbols (+,-,/,*,%) for mathematical operations. Use a comma (,) for a decimal number. Do not use spaces. Enter first number:");
-input1 = Double.Parse(Console.ReadLine()); //Reads first input
+Console.WriteLine("Use only numbers and symbols (+,-,/,*,%,^) for mathematical operations. Use a comma (,) for a decimal number. Do not use spaces. If you want to raise a number use only whole numbers. Enter first number:");
+input1: if (!double.TryParse(Console.ReadLine(), out input1)) //Reads first input and checks whether it is valid
+{
+	Console.WriteLine("Number entered incorrectly. Did you use a period instead of a comma?");
+	goto input1;
+} 
 Console.WriteLine("Now enter the operator:");
-operation = char.Parse(Console.ReadLine()); //Reads operator and then converts to char
+inputOp: if (!char.TryParse(Console.ReadLine(), out operation)) //Reads operand input and then converts to char
+{
+	Console.WriteLine("Operation entered incorrectly, please input only one character and make sure it is only one of the following: +, -, /, %, *, ^");
+	goto inputOp;
+}
 Console.WriteLine("Enter the second number:");
-input2 = Double.Parse(Console.ReadLine()); //Reads second input
-switch ((int)operation) //Converts char of operation to ASCII position number and compares
+input2: if (!double.TryParse(Console.ReadLine(), out input2)) //Reads second input and checks whether it is valid
+{
+	Console.WriteLine("Number entered incorrectly. Did you use a period instead of a comma?");
+	goto input2;
+}
+switch ((int)operation) //Converts char of operation to ASCII position number and compares to value in lookup table
 {
 	case 37: //ASCII character for per cent sign
 	result = input1 % input2;
@@ -54,9 +68,15 @@ switch ((int)operation) //Converts char of operation to ASCII position number an
 	case 47:
 	Console.WriteLine(input1 / input2);
 	break;
+	case 94:
+	Console.WriteLine((int)input1 ^ (int)input2);
+	break;
 	default:
 	Console.WriteLine("Error");
 	break;
 }
+Console.WriteLine("Do you want to continue? (y)es/(n)o"); //Asks whether or not usr wants to continue
+while (Console.ReadKey().Key != ConsoleKey.Y || Console.ReadKey().Key != ConsoleKey.N); //Checks whether user hits Y or N
+if (Console.ReadKey().Key == ConsoleKey.Y) //Y is pressed
+	goto input1; //Goes to start, otherwise ends.
 
-Console.ReadKey(); //Toto nech jako posledni radek, aby se program neukoncil ihned, ale cekal na stisk klavesy od uzivatele.
