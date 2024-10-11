@@ -12,7 +12,7 @@ double input1;
 char operation;
 double input2 = 1;
 double result = 0;
-bool EnteredSecondNumber = false;
+bool enteredSecondNumber = false;
 char endCase;
 /*
 * ZADANI
@@ -33,51 +33,51 @@ char endCase;
 *       - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-while-statement
 * 3) Umozni uzivateli zadavat i desetinna cisla, tedy prekopej kalkulacku tak, aby umela pracovat s floaty
 */
-Start:
+START:
 Console.WriteLine("Hello, this is a calculator, enter the equation you want solved and I will solve it for you.");
 Console.WriteLine("Use only numbers and symbols (+,-,/,*,%,^,r,l,s,c,!) for mathematical operations. Use a comma (,) for a decimal number. Do not use spaces. If you want to raise a number use only whole numbers. For roots (r) the syntax is second numbers root of the first number. Sine (s) and Cosine (c) are in radians. For logarithms (l) the second number is the base of the logarithm. For factorials use only whole numbers.");
 Console.WriteLine("Enter first number:");
-input1: 
+INPUT1: 
 if (!double.TryParse(Console.ReadLine(), out input1)) //Reads first input and checks whether it is valid
 {
 	Console.WriteLine("Number entered incorrectly. Did you use a period instead of a comma?");
-	goto input1;
+	goto INPUT1;
 } 
-inputOp: 
+INPUTOP: 
 Console.WriteLine("Now enter the operator:");
 if (!char.TryParse(Console.ReadLine(), out operation)) //Reads operand input and then converts to char
 {
 	Console.WriteLine("Operation entered incorrectly, please input only one character and make sure it is only one of the following: +, -, /, %, *, ^, r, s, c, l");
-	goto inputOp;
+	goto INPUTOP;
 }
 if (operation == 114) { //Checks for square root, if valid, second input is not needed
 	Console.WriteLine(Math.Sqrt(input1));
-	goto End;
+	goto END;
 } else if (operation == 115)
 {
 	Math.Sin(input1);
-	goto End;
+	goto END;
 } else if (operation == 99)
 {
 	Math.Cos(input1);
-	goto End;
+	goto END;
 } else if (operation == 99)
 {
 	Console.WriteLine(input1!);
-	goto End;
-}else if (EnteredSecondNumber) {
-	goto Calculate;
+	goto END;
+}else if (enteredSecondNumber) {
+	goto CALCULATE;
 }
-input2:
+INPUT2:
 Console.WriteLine("Enter the second number:");
 if (!double.TryParse(Console.ReadLine(), out input2)) //Reads second input and checks whether it is valid
 {
 	Console.WriteLine("Number entered incorrectly. Did you use a period instead of a comma?");
-	goto input2;
+	goto INPUT2;
 }
-EnteredSecondNumber = true;
+enteredSecondNumber = true;
 
-Calculate:
+CALCULATE:
 switch ((int)operation) //Converts char of operation to ASCII position number and compares to value in lookup table
 {
 	case 37: //ASCII character for per cent sign
@@ -104,14 +104,14 @@ switch ((int)operation) //Converts char of operation to ASCII position number an
 	break;
 	default:
 	Console.WriteLine("Error, entered an incorrect operand");
-	EnteredSecondNumber = true;
-	goto inputOp;
+	enteredSecondNumber = true;
+	goto INPUTOP;
 }
-End:
+END:
 Console.WriteLine("Do you want to continue? (y)es/(N)o"); //Asks whether or not usr wants to continue
 endCase = (char)Console.ReadKey().Key;
 if (endCase == 89)
 { //Y is pressed
-	EnteredSecondNumber = false;
-	goto Start; //Goes to start, otherwise ends.
+	enteredSecondNumber = false;
+	goto START; //Goes to start, otherwise ends.
 }
