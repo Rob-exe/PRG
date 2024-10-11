@@ -35,7 +35,7 @@ char endCase;
 */
 Start:
 Console.WriteLine("Hello, this is a calculator, enter the equation you want solved and I will solve it for you.");
-Console.WriteLine("Use only numbers and symbols (+,-,/,*,%,^,r,l) for mathematical operations. Use a comma (,) for a decimal number. Do not use spaces. If you want to raise a number use only whole numbers. For roots (r) the syntax is second numbers root of the first number. For logarithms (l) the second number is the base of the logarithm. Enter first number:");
+Console.WriteLine("Use only numbers and symbols (+,-,/,*,%,^,r,l,s,c) for mathematical operations. Use a comma (,) for a decimal number. Do not use spaces. If you want to raise a number use only whole numbers. For roots (r) the syntax is second numbers root of the first number. Sine (s) and Cosine (c) are in radians. For logarithms (l) the second number is the base of the logarithm. Enter first number:");
 input1: 
 if (!double.TryParse(Console.ReadLine(), out input1)) //Reads first input and checks whether it is valid
 {
@@ -46,12 +46,18 @@ inputOp:
 Console.WriteLine("Now enter the operator:");
 if (!char.TryParse(Console.ReadLine(), out operation)) //Reads operand input and then converts to char
 {
-	Console.WriteLine("Operation entered incorrectly, please input only one character and make sure it is only one of the following: +, -, /, %, *, ^");
+	Console.WriteLine("Operation entered incorrectly, please input only one character and make sure it is only one of the following: +, -, /, %, *, ^, r, s, c, l");
 	goto inputOp;
 }
 if (operation == 114) { //Checks for square root, if valid, second input is not needed
 	Console.WriteLine(Math.Sqrt(input1));
 	goto End;
+} else if (operation == 115)
+{
+	Math.Sin(input1);
+} else if (operation == 99)
+{
+	Math.Cos(input1);
 } else if (EnteredSecondNumber) {
 	goto Calculate;
 }
@@ -61,10 +67,9 @@ if (!double.TryParse(Console.ReadLine(), out input2)) //Reads second input and c
 {
 	Console.WriteLine("Number entered incorrectly. Did you use a period instead of a comma?");
 	goto input2;
-} 
-if (!EnteredSecondNumber) {
-EnteredSecondNumber = true;
 }
+EnteredSecondNumber = true;
+
 Calculate:
 switch ((int)operation) //Converts char of operation to ASCII position number and compares to value in lookup table
 {
@@ -98,7 +103,8 @@ switch ((int)operation) //Converts char of operation to ASCII position number an
 End:
 Console.WriteLine("Do you want to continue? (y)es/(N)o"); //Asks whether or not usr wants to continue
 endCase = (char)Console.ReadKey().Key;
-if ((int)endCase == 89){ //Y is pressed
+if (endCase == 89)
+{ //Y is pressed
 	EnteredSecondNumber = false;
 	goto Start; //Goes to start, otherwise ends.
 }
