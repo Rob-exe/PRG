@@ -35,7 +35,8 @@ char endCase;
 */
 Start:
 Console.WriteLine("Hello, this is a calculator, enter the equation you want solved and I will solve it for you.");
-Console.WriteLine("Use only numbers and symbols (+,-,/,*,%,^,r,l,s,c) for mathematical operations. Use a comma (,) for a decimal number. Do not use spaces. If you want to raise a number use only whole numbers. For roots (r) the syntax is second numbers root of the first number. Sine (s) and Cosine (c) are in radians. For logarithms (l) the second number is the base of the logarithm. Enter first number:");
+Console.WriteLine("Use only numbers and symbols (+,-,/,*,%,^,r,l,s,c,!) for mathematical operations. Use a comma (,) for a decimal number. Do not use spaces. If you want to raise a number use only whole numbers. For roots (r) the syntax is second numbers root of the first number. Sine (s) and Cosine (c) are in radians. For logarithms (l) the second number is the base of the logarithm. For factorials use only whole numbers.");
+Console.WriteLine("Enter first number:");
 input1: 
 if (!double.TryParse(Console.ReadLine(), out input1)) //Reads first input and checks whether it is valid
 {
@@ -60,7 +61,11 @@ if (operation == 114) { //Checks for square root, if valid, second input is not 
 {
 	Math.Cos(input1);
 	goto End;
-} else if (EnteredSecondNumber) {
+} else if (operation == 99)
+{
+	Console.WriteLine(input1!);
+	goto End;
+}else if (EnteredSecondNumber) {
 	goto Calculate;
 }
 input2:
