@@ -5,9 +5,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-float number1;
-char operator = "";
-float number2;
+double input1;
+char operation;
+double input2;
+double result = 0;
 /*
 * ZADANI
 * Vytvor program ktery bude fungovat jako kalkulacka. Kroky programu budou nasledujici:
@@ -29,31 +30,33 @@ float number2;
 */
 
 Console.WriteLine("Hello, this is a calculator, enter the equation you want solved and I will solve it for you.");
-Console.WriteLine("Use only numbers and symbols (+,-,/,*,%) for mathematical operations. Use a period (.) for a decimal number. Do not use spaces. Enter first number:");
-number1 = Convert.tofloat(Console.ReadLine());
-COnsole.WriteLine("Now enter the operator:");
-operator = Console.ReadLine();
+Console.WriteLine("Use only numbers and symbols (+,-,/,*,%) for mathematical operations. Use a comma (,) for a decimal number. Do not use spaces. Enter first number:");
+input1 = Double.Parse(Console.ReadLine()); //Reads first input
+Console.WriteLine("Now enter the operator:");
+operation = char.Parse(Console.ReadLine()); //Reads operator and then converts to char
 Console.WriteLine("Enter the second number:");
-number2 = Convert.ToFloat(Console.Readline());
-switch (c)
+input2 = Double.Parse(Console.ReadLine()); //Reads second input
+switch ((int)operation) //Converts char of operation to ASCII position number and compares
 {
-	case (37): //ASCII character for per cent sign
-	Console.WriteLine(number1 % number2);
+	case 37: //ASCII character for per cent sign
+	result = input1 % input2;
+	Console.WriteLine(result); //Only used result here, it is easier to just print straight out.
 	break;
-	case (42):
-	Console.WriteLine(number1 * number2);
+	case 42:
+	Console.WriteLine(input1 * input2);
 	break;
-	case (43):
-	Console.WriteLine(number1 + number2);
+	case 43:
+	Console.WriteLine(input1 + input2);
 	break;
-	case (45):
-	Console.WriteLine(number1 - number2);
+	case 45:
+	Console.WriteLine(input1 - input2);
 	break;
-	case (47):
-	Console.WriteLine(number1 / number2);
+	case 47:
+	Console.WriteLine(input1 / input2);
 	break;
 	default:
 	Console.WriteLine("Error");
+	break;
 }
 
 Console.ReadKey(); //Toto nech jako posledni radek, aby se program neukoncil ihned, ale cekal na stisk klavesy od uzivatele.
