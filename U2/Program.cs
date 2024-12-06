@@ -1,55 +1,53 @@
-﻿using System.Collections.Generic;
-using System;
-
-
-internal class Program
+﻿class Program
 {
-	private static void Main(string[] args)
-	{
-		char[,] battle = new char[10,10]{
-			{'O','O','O','O','O','O','O','O','O','O'},
-			{'O','O','O','O','O','O','O','O','O','O'},
-			{'O','O','O','O','O','O','O','O','O','O'},
-			{'O','O','O','O','O','O','O','O','O','O'},
-			{'O','O','O','O','O','O','O','O','O','O'},
-			{'O','O','O','O','O','O','O','O','O','O'},
-			{'O','O','O','O','O','O','O','O','O','O'},
-			{'O','O','O','O','O','O','O','O','O','O'},
-			{'O','O','O','O','O','O','O','O','O','O'},
-			{'O','O','O','O','O','O','O','O','O','O'}
-		}; //inicializace herniho pole
-		Dictionary<char, int> ships = new Dictionary<char, int>(){
-			{'L', 5},
-			{'B', 4},
-			{'K', 3},
-			{'P', 3},
-			{'T', 2}
-		}; //slovnik pro velikost lode
-		battle = ShipPlacement(battle); //Umisteni lodi
+    static void Main(string[] args)
+    {
+        char[,] playerBoard = GenerateBoards(true);
+        char[,] enemyBoard = GenerateBoards(false);
+    }
+    static char[,] GenerateBoards(bool player) 
+    {
 
-	}
-	static char[,] ShipPlacement(char[,] args)
-	{
-		bool allShipsPlaced = false;
-		char[,] setup = args;
-		while (!allShipsPlaced)
-		{
-			PrintBattle(setup);
-			Console.ReadKey();
-			Console.Clear();
-		}
-		return setup;
-	}
-	static void PrintBattle(char[,] args)
-	{
-		for (int i = 0; i < args.GetLength(0); i++) 
-		{ 
-  			for (int j = 0; j < args.GetLength(1); j++) 
-  			{ 
-    			Console.Write(args[i, j] + " "); 
-  			} 
-  		Console.WriteLine(); 
-		} 
+        char[,] board = new char[10,10];
+        for (int i = 0; i < board.GetLength(0); i++) //generate board
+            {
+                for (int x = 0; i < board.GetLength(1); x++) 
+                {
+                    board[i,x] = '~';
+                }
+            }
+        if (player) //Generate board of player
+        {
+            while (true)
+            {
+                int length; //length of placed ship
+                Console.WriteLine("Pick which ship you want to place (L (5), B (4), K (3), P (2), T (2)): ");
+                ConsoleKeyInfo input = Console.ReadKey();
+                switch (input.Key)
+                {
+                    case ConsoleKey.L:
+                    length = 5;
+                    break;
+                    case ConsoleKey.B:
+                    length = 4;
+                    break;
+                    case ConsoleKey.K:
+                    length = 3;
+                    break;
+                    case ConsoleKey.P:
+                    length = 2;
+                    break;
+                    case ConsoleKey.T:
+                    length = 2;
+                    break;
+                    default:
+                    Console.WriteLine("Incorrect input, try again.");
+                    break;
+                }
+            }
+        } else if (!player) {
 
-	}
+        }
+        return board;
+    }
 }
