@@ -1,5 +1,5 @@
 ﻿using System;
-
+//I had help of AI
 class BattleshipGame
 {
     static void Main(string[] args)
