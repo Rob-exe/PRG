@@ -118,7 +118,7 @@ namespace DungeonCrawler_U3
 				if (room3 == null)
 				{
 					Console.WriteLine("There are two paths ahead, which do you choose? " + room1.GetType() +" or " + room2.GetType() + "? Left or right?");
-					playerInput = Console.ReadLine();
+					playerInput = Console.ReadLine() + "";
 					if (string.Equals(playerInput.ToLower(), "left"))
 					{
 						return room1;
@@ -133,7 +133,7 @@ namespace DungeonCrawler_U3
 					}
 				} else {
 					Console.WriteLine("There are three paths ahead, do you choose " + room1.GetType() + ", " + room2.GetType() + " or " + room3.GetType() + "? Left, center or right?");
-					playerInput = Console.ReadLine();
+					playerInput = Console.ReadLine() + "";
 					if (string.Equals(playerInput.ToLower(), "left"))
 					{
 						return room1;
