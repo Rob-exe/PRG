@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Game
+namespace DungeonCrawler_U3
 {
 	enum RoomTypes
 	{
@@ -12,7 +12,6 @@ namespace Game
 	{
 
 		public int roomType;
-		List<string> contains;
 		
 
 	}
@@ -21,29 +20,28 @@ namespace Game
 		public Room(int roomType) {
 			this.roomType = roomType;
 		}
-		public string GetType() {
-			switch (this.roomType)
+		public new string GetType() {
+			switch (roomType)
 			{
-				case (int) RoomTypes.Fight:
-				return "Fight";
-				case (int) RoomTypes.Loot:
-				return "Loot";
-				case (int) RoomTypes.Event:
-				return "Event";
+				case (int)RoomTypes.Fight:
+					return "Fight";
+				case (int)RoomTypes.Loot:
+					return "Loot";
+				case (int)RoomTypes.Event:
+					return "Event";
+				default:
+					break;
 			}
 			return "None";
 		}
 		public int GetIntType() {
-			switch (this.roomType)
+			return roomType switch
 			{
-				case (int) RoomTypes.Fight:
-				return 1;
-				case (int) RoomTypes.Loot:
-				return 2;
-				case (int) RoomTypes.Event:
-				return 3;
-			}
-			return -1;
+				(int)RoomTypes.Fight => 1,
+				(int)RoomTypes.Loot => 2,
+				(int)RoomTypes.Event => 3,
+				_ => -1,
+			};
 		}
 	}
 }
