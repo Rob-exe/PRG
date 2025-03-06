@@ -13,18 +13,18 @@ namespace DungeonCrawler_U3 {
 			Enemy enemy = new();
 			Player player = new();
 			Console.WriteLine(currentRoom.GetType());
-			if (currentRoom.GetIntType() == 1){
-				while (!enemy.IsDead() && player.IsDead())
+			if (currentRoom.GetIntType() == 1) {
+				while (!enemy.IsDead() && !player.IsDead())
 				{
-					if (enemy.ATK_SPD < player.ATK_SPD){
-						enemy.GetDamage(player.Attack());
-						player.GetDamage(enemy.Attack());
-					} else {
-						player.GetDamage(enemy.Attack());
-						enemy.GetDamage(player.Attack());
-					}
+					player.Fight(enemy);
 				}
+				if (enemy.IsDead()){
+					Console.WriteLine("You have bested all the foul beasts! You have scavenged some loot.");
+				}
+			} else if (currentRoom.GetIntType() == 2) {
+
 			}
+			player.Move(currentRoom, room1, room2, room3);
 		}
 	}
 }

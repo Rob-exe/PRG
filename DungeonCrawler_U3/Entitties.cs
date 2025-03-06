@@ -28,7 +28,7 @@ namespace DungeonCrawler_U3
 			HP =- (damage - DEF);
 		}
 		public bool IsDead() {
-			if (HP == 0)
+			if (HP <= 0)
 			{
 				return true;
 			}
@@ -53,7 +53,7 @@ namespace DungeonCrawler_U3
 				{
 					GetDamage(enemy1.Attack());
 					enemy1.GetDamage(Attack());
-				} else if (ATK_SPD > enemy1.ATK_SPD) 
+				} else if (ATK_SPD >= enemy1.ATK_SPD) 
 				{
 					enemy1.GetDamage(Attack());
 					GetDamage(enemy1.Attack());
@@ -63,7 +63,7 @@ namespace DungeonCrawler_U3
 				{
 					GetDamage(enemy1.Attack());
 					enemy1.GetDamage(Attack());
-				} else if (ATK_SPD > enemy1.ATK_SPD) 
+				} else if (ATK_SPD >= enemy1.ATK_SPD) 
 				{
 					enemy1.GetDamage(Attack());
 					GetDamage(enemy1.Attack());
@@ -71,7 +71,7 @@ namespace DungeonCrawler_U3
 				{
 					GetDamage(enemy2.Attack());
 					enemy2.GetDamage(Attack());
-				} else if (ATK_SPD > enemy2.ATK_SPD) 
+				} else if (ATK_SPD >= enemy2.ATK_SPD) 
 				{
 					enemy2.GetDamage(Attack());
 					GetDamage(enemy2.Attack());
@@ -81,7 +81,7 @@ namespace DungeonCrawler_U3
 				{
 					GetDamage(enemy1.Attack());
 					enemy1.GetDamage(Attack());
-				} else if (ATK_SPD > enemy1.ATK_SPD) 
+				} else if (ATK_SPD >= enemy1.ATK_SPD) 
 				{
 					enemy1.GetDamage(Attack());
 					GetDamage(enemy1.Attack());
@@ -89,7 +89,7 @@ namespace DungeonCrawler_U3
 				{
 					GetDamage(enemy2.Attack());
 					enemy2.GetDamage(Attack());
-				} else if (ATK_SPD > enemy2.ATK_SPD) 
+				} else if (ATK_SPD >= enemy2.ATK_SPD) 
 				{
 					enemy2.GetDamage(Attack());
 					GetDamage(enemy2.Attack());
@@ -97,7 +97,7 @@ namespace DungeonCrawler_U3
 				{
 					GetDamage(enemy3.Attack());
 					enemy3.GetDamage(Attack());
-				} else if (ATK_SPD > enemy3.ATK_SPD) 
+				} else if (ATK_SPD >= enemy3.ATK_SPD) 
 				{
 					enemy3.GetDamage(Attack());
 					GetDamage(enemy3.Attack());
