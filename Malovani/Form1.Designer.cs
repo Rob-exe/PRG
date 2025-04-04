@@ -30,6 +30,7 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.customColour = new System.Windows.Forms.PictureBox();
             this.CustomColor = new System.Windows.Forms.PictureBox();
             this.WhitePen = new System.Windows.Forms.PictureBox();
             this.GrayPen = new System.Windows.Forms.PictureBox();
@@ -38,10 +39,12 @@
             this.RedPen = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.Rectangle = new System.Windows.Forms.Button();
+            this.clearBtn = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WhitePen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrayPen)).BeginInit();
@@ -53,6 +56,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(13, 166);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(775, 497);
@@ -65,6 +69,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Controls.Add(this.customColour);
             this.panel1.Controls.Add(this.CustomColor);
             this.panel1.Controls.Add(this.WhitePen);
             this.panel1.Controls.Add(this.GrayPen);
@@ -74,18 +79,26 @@
             this.panel1.Location = new System.Drawing.Point(10, 10);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 40);
+            this.panel1.Size = new System.Drawing.Size(290, 40);
             this.panel1.TabIndex = 1;
+            // 
+            // customColour
+            // 
+            this.customColour.BackColor = System.Drawing.Color.SeaGreen;
+            this.customColour.Location = new System.Drawing.Point(250, 5);
+            this.customColour.Name = "customColour";
+            this.customColour.Size = new System.Drawing.Size(30, 30);
+            this.customColour.TabIndex = 24;
+            this.customColour.TabStop = false;
             // 
             // CustomColor
             // 
-            this.CustomColor.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.CustomColor.BackColor = System.Drawing.Color.SeaGreen;
             this.CustomColor.Location = new System.Drawing.Point(210, 5);
             this.CustomColor.Name = "CustomColor";
             this.CustomColor.Size = new System.Drawing.Size(30, 30);
             this.CustomColor.TabIndex = 23;
             this.CustomColor.TabStop = false;
-            this.CustomColor.Click += new System.EventHandler(this.CustomColor_Click);
             // 
             // WhitePen
             // 
@@ -166,18 +179,29 @@
             // 
             // Rectangle
             // 
-            this.Rectangle.Location = new System.Drawing.Point(269, 10);
+            this.Rectangle.Location = new System.Drawing.Point(100, 79);
             this.Rectangle.Name = "Rectangle";
-            this.Rectangle.Size = new System.Drawing.Size(75, 40);
+            this.Rectangle.Size = new System.Drawing.Size(75, 81);
             this.Rectangle.TabIndex = 4;
             this.Rectangle.Text = "Rectangle";
             this.Rectangle.UseVisualStyleBackColor = true;
+            this.Rectangle.Click += new System.EventHandler(this.Rectangle_Click);
+            // 
+            // clearBtn
+            // 
+            this.clearBtn.Location = new System.Drawing.Point(13, 79);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(75, 81);
+            this.clearBtn.TabIndex = 5;
+            this.clearBtn.Text = "Clear/New";
+            this.clearBtn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 675);
+            this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.Rectangle);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label1);
@@ -187,6 +211,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.customColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomColor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WhitePen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrayPen)).EndInit();
@@ -211,8 +236,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.PictureBox CustomColor;
-        private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button Rectangle;
+        private System.Windows.Forms.Button clearBtn;
+        private System.Windows.Forms.PictureBox customColour;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
 
