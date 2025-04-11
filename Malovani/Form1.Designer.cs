@@ -42,6 +42,8 @@
             this.Rectangle = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.button1 = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customColour)).BeginInit();
@@ -62,7 +64,9 @@
             this.pictureBox1.Size = new System.Drawing.Size(775, 497);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
@@ -90,6 +94,7 @@
             this.customColour.Size = new System.Drawing.Size(30, 30);
             this.customColour.TabIndex = 24;
             this.customColour.TabStop = false;
+            this.customColour.Click += new System.EventHandler(this.customColour_Click);
             // 
             // CustomColor
             // 
@@ -195,12 +200,24 @@
             this.clearBtn.TabIndex = 5;
             this.clearBtn.Text = "Clear/New";
             this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(182, 79);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 81);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 675);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.Rectangle);
             this.Controls.Add(this.numericUpDown1);
@@ -240,6 +257,8 @@
         private System.Windows.Forms.Button clearBtn;
         private System.Windows.Forms.PictureBox customColour;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
