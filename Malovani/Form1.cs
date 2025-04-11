@@ -15,13 +15,16 @@ namespace Malovani
     {
         Graphics g;
         Pen pen = new Pen(Color.Black,5);
+        Pen tmpPen = new Pen(Color.Black,5);
         Brush brush = new SolidBrush(Color.Black);
         Point start,end;
         Size rectSize;
         bool rectTool = false;
+        Color curColor = Color.Black;
         List<Point> curPoints = new List<Point>();
-        List<List<Point>> allPoints = new List<List<Point>>();
-        List<Rectangle> rectangles = new List<System.Drawing.Rectangle>();
+        Dictionary<List<Point>, Color> allPoints = new Dictionary<List<Point>, Color>();
+        Dictionary<Rectangle, Color> rectanglesOutline = new Dictionary<Rectangle, Color>();
+        Dictionary<Rectangle, Brush> rectanglesFill = new Dictionary<Rectangle, Brush>();
 
         public Form1()
         {
@@ -40,6 +43,7 @@ namespace Malovani
                 curPoints.Clear();
                 // startpoint
                 curPoints.Add(e.Location);
+                curColor = pen.Color;
             } else if (rectTool) {
                 start = e.Location;
             }
@@ -66,8 +70,9 @@ namespace Malovani
         {
             if (curPoints.Count > 1)
             {
+                pen = tmpPen;  
                 // ToList creates a copy
-                allPoints.Add(curPoints.ToList());
+                allPoints.Add(curPoints.ToList(),curColor);
                 curPoints.Clear();
             }
             else if (rectTool)
@@ -76,7 +81,8 @@ namespace Malovani
                 rectSize.Width = start.X - end.X;
                 rectSize.Height = start.Y - end.Y;
                 Rectangle rectangleTmp = new Rectangle(start,rectSize);
-                rectangles.Add(rectangleTmp);
+                rectanglesOutline.Add(rectangleTmp, curColor);
+                rectanglesFill.Add(rectangleTmp, brush);
             }
         }
 
@@ -92,17 +98,30 @@ namespace Malovani
         private void clearBtn_Click(object sender, EventArgs e)
         {
             pictureBox1.Invalidate();
+            allPoints.Clear();
+            rectanglesFill.Clear();
+            rectanglesOutline.Clear(); 
             rectTool = false;
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
-        {
+        {  
             if (curPoints.Count > 1) e.Graphics.DrawCurve(pen, curPoints.ToArray());
             // other lines or curves
-            foreach (List<Point> points in allPoints)
-                if (points.Count > 1) e.Graphics.DrawCurve(pen, points.ToArray());
-            foreach (Rectangle rect in rectangles)
-                e.Graphics.DrawRectangle(pen,rect);
+            foreach (var item in allPoints)
+            {
+                if (item.Key.Count > 1)
+                {
+                    pen.Color = item.Value;
+                    e.Graphics.DrawCurve(pen, item.Key.ToArray());
+                }
+            }
+
+            foreach (var rect in rectanglesOutline) {
+                pen.Color = rect.Value;
+                e.Graphics.DrawRectangle(pen, rect.Key); }
+            foreach (var rect in rectanglesFill)
+                e.Graphics.FillRectangle(rect.Value, rect.Key);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -123,16 +142,29 @@ namespace Malovani
             PictureBox p = (PictureBox)sender;
             pen.Color = p.BackColor;
             rectTool = false;
+            curColor = pen.Color;
+            tmpPen = pen;
         }
 
         private void Rectangle_Click(object sender, EventArgs e)
         {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            if (!rectTool)
             {
-                brush = new SolidBrush(colorDialog1.Color);
-                rectTool = true;
+                if (colorDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    brush = new SolidBrush(colorDialog1.Color);
+                    rectTool = true;
+                }
+            } else {
+                rectTool = false;
             }
-            
+        }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+            PictureBox p = (PictureBox)sender;
+            pen.Color = p.BackColor;
+            rectTool = false;
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
